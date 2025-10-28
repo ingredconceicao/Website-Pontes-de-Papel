@@ -25,7 +25,7 @@ const UserSchema: Schema = new Schema({
         lowercase: true, 
         trim: true 
     },
-    senha_hash: { type: String, required: true, select: false }, // 'select: false' impede que a senha seja retornada em consultas padrão
+    senha_hash: { type: String, required: true, select: false },
     tipo: { 
         type: String, 
         enum: ['aluno', 'doador'], 

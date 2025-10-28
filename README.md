@@ -15,14 +15,16 @@ O projeto segue os princípios da **Clean Architecture**, separando responsabili
 
 ```
 ├── src
-│   ├── app/controllers/
-│   ├── config/
-│   ├── core/
-│   ├── infra/
-│   ├── shared/
-│   ├── test/
-│   └── index.ts
-│   └── main.ts
+│   ├── controllers/
+│   ├── detabase/
+│   ├── img/
+│   ├── middlewares/
+│   ├── models/
+|   ├── repository/
+|   ├── routes/
+|   ├── services/
+|   ├── tests/
+│   └── app.ts
 
 ```
 
@@ -48,7 +50,9 @@ O projeto segue os princípios da **Clean Architecture**, separando responsabili
 ├── src
 │   └── test
 │       ├── unit/              
-│       └── integration/  
+│       └── integration/
+|               └── book/ 
+
 
 ```
 ## 📋 Cobertura de Testes
@@ -61,6 +65,22 @@ Atualizar livro (PUT /books/:id)
 
 Excluir livro (DELETE /books/:id)
 
+
+## ✅ Testes Realizados
+1. Criar Livro (POST /books)
+![alt text](<src/img/Captura de tela 2025-10-27 210553.png>)
+
+
+Ambos os testes foram executados com sucesso usando Jest e Supertest.
+
+```
+```
+### 📋 Cobertura de Testes de usuario
+
+1. Registro de Usuário (POST /auth/register)
+![alt text](<src/img/Captura de tela 2025-10-27 210845.png>)
+
+```
 
 ### 🔧 Como Rodar o Projeto
 
