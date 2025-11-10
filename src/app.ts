@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import connectDB from "./database/MongooseConnection";
 import bookRoutes from "./routes/BookRoutes";
 import authRoutes from './routes/authRoutes'; 
+import solicitacaoRoutes from './routes/solicitacaoRoutes';
+
 
 dotenv.config();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 
 app.use("/api/books", bookRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/books', solicitacaoRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

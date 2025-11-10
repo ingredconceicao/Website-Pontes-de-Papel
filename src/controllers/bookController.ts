@@ -28,6 +28,9 @@ export const getAvailableBooks = async (req: Request, res: Response): Promise<vo
       .sort({ createdAt: -1 });
 
     const total = await Book.countDocuments(query);
+if (total === 0) {
+  res.status(200).json({ success: true, message: 'Nenhum livro encontrado.', data: [] });
+}
 
     res.status(200).json({
       success: true,
@@ -45,7 +48,7 @@ export const getAvailableBooks = async (req: Request, res: Response): Promise<vo
 
 export const createBook = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { titulo, autor, genero, condicao, isbn } = req.body;
+    const { titulo, autor, genero, condicao} = req.body;
     const doadorId = (req as any).user._id;
 
     const newBook: IBook = new Book({
@@ -53,7 +56,6 @@ export const createBook = async (req: Request, res: Response): Promise<void> => 
       autor,
       genero,
       condicao,
-      isbn,
       doador: doadorId,
       status: 'Disponível',
     });

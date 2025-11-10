@@ -19,7 +19,7 @@ export const register = async (req: Request, res: Response) => {
     const user = await User.create({
       nome,
       email,
-      senha_hash: 123,
+      senha_hash,
       tipo,
       endereco,
       telefone,
@@ -32,7 +32,7 @@ export const register = async (req: Request, res: Response) => {
       data: { user: { _id: user._id, nome: user.nome, tipo: user.tipo }, token },
     });
   } catch (error) {
-    console.error(error);
+    console.error('❌ Erro no registro:', error);
     res.status(500).json({ success: false, message: 'Erro ao registrar usuário' });
   }
 };
@@ -59,8 +59,8 @@ export const login = async (req: Request, res: Response) => {
       data: { user: { _id: user._id, nome: user.nome, tipo: user.tipo }, token },
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Erro ao fazer login' });
-  }
+  console.error('❌ Erro no login:', error);
+  res.status(500).json({ success: false, message: 'Erro ao fazer login' });
+}
 };
 

@@ -68,7 +68,7 @@ Excluir livro (DELETE /books/:id)
 
 ## ✅ Testes Realizados
 1. Criar Livro (POST /books)
-![alt text](<src/img/Captura de tela 2025-10-27 210553.png>)
+![post/books](<src/img/Captura de tela 2025-10-27 210553.png>)
 
 
 Ambos os testes foram executados com sucesso usando Jest e Supertest.
@@ -78,7 +78,7 @@ Ambos os testes foram executados com sucesso usando Jest e Supertest.
 ### 📋 Cobertura de Testes de usuario
 
 1. Registro de Usuário (POST /auth/register)
-![alt text](<src/img/Captura de tela 2025-10-27 210845.png>)
+![auth/register](<src/img/Captura de tela 2025-10-27 210845.png>)
 
 ```
 

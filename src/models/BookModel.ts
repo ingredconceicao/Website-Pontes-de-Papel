@@ -33,4 +33,6 @@ const BookSchema: Schema = new Schema({
     data_cadastro: { type: Date, default: Date.now },
 }, { timestamps: true });
 
+BookSchema.index({ doador: 1 });
+
 export default mongoose.model<IBook>('Book', BookSchema);
