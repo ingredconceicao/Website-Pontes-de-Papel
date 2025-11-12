@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Transaction from '../../src/models/Transacitons';
-import Book from '../../src/models/BookModel';
+import Transaction from '../models/Transacitons';
+import Book from '../models/BookModel';
 
 
 export const requestBook = async (req: Request, res: Response): Promise<void> => {

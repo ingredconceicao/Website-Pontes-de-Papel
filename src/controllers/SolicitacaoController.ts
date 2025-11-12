@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Solicitacao from '../../src/models/SolicitacaoModel';
-import Book from '../../src/models/BookModel';
+import Solicitacao from '../models/SolicitacaoModel';
+import Book from '../models/BookModel';
 
 export const solicitarLivro = async (req: Request, res: Response) => {
   try {
