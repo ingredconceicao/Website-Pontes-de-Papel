@@ -4,6 +4,7 @@
   "description": "API DE DOACAO DE LIVROS",
   "main": "dist/server.js",
   "type": "commonjs",
+  "postinstall": "npm install @types/node @types/express --save-dev",
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "build": "tsc",
