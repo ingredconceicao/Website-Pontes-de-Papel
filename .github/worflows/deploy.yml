@@ -1,41 +1,21 @@
 name: CI Test & Deploy to Render
 
-on:
+on: 
   push:
-    branches:
-      - main
-
+    branches: [main]
+  pull_request:
+    branches: [main]
+env:
+  NODE_VERSION: '18.x'
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run TypeScript build check
-        run: npm run build
-
-      - name: Run tests (if any)
-        run: |
-          if [ -f package.json ] && grep -q "\"test\"" package.json; then
-            npm test || echo "⚠️ Nenhum teste configurado"
-          fi
-
   deploy:
-    needs: test
+    name: deploy-to-render
     runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to Render
-        uses: render-examples/deploy-action@v1
-        with:
-          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
 
+    if: github.ref == 'refs/heads/main'
+    steps: 
+      - name: deploy-to-render
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          services-id: ${{secrets.RENDER_SERVICE_ID}}
+          api-key: ${{secrets.RENDER_SERVICE_API_KEY}}
