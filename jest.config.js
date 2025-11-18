@@ -7,4 +7,9 @@ module.exports = {
   },
   testMatch: ['**/tests/**/*.spec.ts'],
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json'
+    }
+  }
 };
