@@ -4,24 +4,30 @@ import connectDB from "./database/MongooseConnection";
 import bookRoutes from "./routes/BookRoutes";
 import authRoutes from './routes/authRoutes'; 
 import solicitacaoRoutes from './routes/solicitacaoRoutes';
-
+import mongoose from 'mongoose';
 
 dotenv.config();
-
-connectDB();
 
 const app = express();
 app.use(express.json());
 
+
 app.use("/api/books", bookRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/books', solicitacaoRoutes);
+app.use('/api/solicitacoes', solicitacaoRoutes);
 
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+connectDB()
+  .then(() => {
+    console.log("✅ MongoDB conectado");
 
+    app.listen(3000, () => {
+      console.log("🚀 Servidor rodando na porta 3000");
+    });
+  })
+  .catch((err) => {
+    console.error("❌ Erro ao conectar no MongoDB:", err);
+  });
 
 export default app;
+

@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
+    "dev": "nodemon src/app.ts",
+    "build": "echo '🚀 Iniciando build...' && tsc && echo '✨ Build concluído com sucesso!'",
+    "start": "node dist/app.js",
     "test": "jest --runInBand"
   },
   "keywords": [
