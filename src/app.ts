@@ -1,12 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
 import connectDB from "./database/MongooseConnection";
 import bookRoutes from "./routes/BookRoutes";
 import authRoutes from './routes/authRoutes'; 
 import solicitacaoRoutes from './routes/solicitacaoRoutes';
 import mongoose from 'mongoose';
+import{config} from './config/environment'
 
-dotenv.config();
+const URI = config.mongo_uri;
+const PORT =config.port
 
 const app = express();
 app.use(express.json());
@@ -21,7 +22,7 @@ connectDB()
   .then(() => {
     console.log("✅ MongoDB conectado");
 
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("🚀 Servidor rodando na porta 3000");
     });
   })
