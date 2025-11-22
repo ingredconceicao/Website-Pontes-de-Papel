@@ -3,14 +3,35 @@ import connectDB from "./database/MongooseConnection";
 import bookRoutes from "./routes/BookRoutes";
 import authRoutes from './routes/authRoutes'; 
 import solicitacaoRoutes from './routes/solicitacaoRoutes';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import{config} from './config/environment'
+import{config} from './config/environment';
+import cors from 'cors';
+
+
+
 
 const URI = config.mongo_uri;
 const PORT =config.port
 
 const app = express();
+
 app.use(express.json());
+dotenv.config();
+
+app.use(cors({
+
+  origin: [
+    'http://localhost:3000', 
+    'https://pontes-de-papel.onrender.com'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
+
+app.use(express.json());
+
 
 
 app.use("/api/books", bookRoutes);
@@ -23,7 +44,7 @@ connectDB()
     console.log("✅ MongoDB conectado");
 
     app.listen(PORT, () => {
-      console.log("🚀 Servidor rodando na porta 3000");
+      console.log(`🚀 Servidor rodando na porta ${PORT}`);
     });
   })
   .catch((err) => {
