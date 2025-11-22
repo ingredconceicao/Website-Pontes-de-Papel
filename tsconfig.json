@@ -8,17 +8,19 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule":true,
+    "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["node"]
+    "types": ["node"],
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["src","tests","src/database/MongooseConnection.ts"],
+  "include": ["src", "tests", "src/database/MongooseConnection.ts"],
   "exclude": ["dist", "src/tests"]
 }
+
 
 
 
