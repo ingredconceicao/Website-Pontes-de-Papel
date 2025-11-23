@@ -127,3 +127,32 @@ export const getMyDonations = async (req: Request, res: Response): Promise<void>
     res.status(500).json({ success: false, message: 'Erro ao buscar suas doações' });
   }
 };
+
+
+export const getRecentBooks = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const books = await Book.find()
+      .sort({ createdAt: -1 })
+      .limit(10)
+      .populate('doador', 'nome email');
+
+    res.status(200).json({ success: true, data: books });
+  } catch (error) {
+    console.error("❌ Erro ao buscar livros recentes:", error);
+    res.status(500).json({ success: false, message: "Erro ao buscar livros recentes." });
+  }
+};
+
+
+export const getDeliveredBooks = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const books = await Book.find({ status: "Entregue" })
+      .sort({ updatedAt: -1 })
+      .populate('doador', 'nome email');
+
+    res.status(200).json({ success: true, data: books });
+  } catch (error) {
+    console.error("❌ Erro ao buscar livros entregues:", error);
+    res.status(500).json({ success: false, message: "Erro ao buscar livros entregues." });
+  }
+};
