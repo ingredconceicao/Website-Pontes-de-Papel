@@ -7,6 +7,9 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import{config} from './config/environment';
 import cors from 'cors';
+import aiRoutes from "./routes/aiRoutes";
+
+
 
 
 
@@ -32,7 +35,7 @@ app.use(cors({
 
 app.use(express.json());
 
-
+app.use("/api/ai", aiRoutes);
 
 app.use("/api/books", bookRoutes);
 app.use('/api/auth', authRoutes);
