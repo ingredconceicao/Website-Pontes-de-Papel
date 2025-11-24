@@ -14,7 +14,7 @@ const router = Router();
 
 router.get('/', getAvailableBooks);
 
-// Rotas que o frontend exige
+
 router.get('/recent', getRecentBooks);
 router.get('/delivered', getDeliveredBooks);
 
